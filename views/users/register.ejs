@@ -1,0 +1,89 @@
+<%- include('../partials/header.ejs') %>
+
+<div class="registration">
+  <div class="form-width">
+    <h1>SNEAKER STREET</h1>
+
+    <% if (errors) { %>
+    <div class="alert alert-danger">
+      <p style="font-weight: 600; color: #c00"><%= errors %></p>
+    </div>
+    <% } %>
+    <form action="/accounts" method="post">
+      <h1>Create a account</h1>
+      <div class="mbm">
+        <div class="form-row">
+          <div class="form-col">
+            <label for="fname" class="form-label">First Name</label>
+            <input
+              type="text"
+              name="firstName"
+              class="form-control"
+              value="<%= firstName ?? '' %>"
+              id="fname"
+            />
+          </div>
+          <div class="form-col">
+            <label for="lname" class="form-label">Last Name</label>
+            <input
+              type="text"
+              class="form-control"
+              name="lastName"
+              value="<%= lastName ?? '' %>"
+              id="lname"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="mbm">
+        <label for="email" class="form-label">Email</label>
+        <input
+          type="email"
+          name="email"
+          class="form-control"
+          value="<%= email ?? '' %>"
+          id="email"
+        />
+      </div>
+      <div class="mbm">
+        <label for="mobile" class="form-label">Mobile No</label>
+        <input
+          type="text"
+          name="mobile"
+          class="form-control"
+          data-numeric-input
+          value="<%= mobile ?? '' %>"
+          id="mobile"
+        />
+      </div>
+      <div class="mbm">
+        <label for="password" class="form-label">Password</label>
+        <input
+          type="password"
+          name="password"
+          class="form-control"
+          id="password"
+        />
+      </div>
+      <div class="mbm">
+        <label for="cpassword" class="form-label">Confirm Password</label>
+        <input
+          type="password"
+          name="cpassword"
+          class="form-control"
+          id="cpassword"
+        />
+      </div>
+      <div class="mbm">
+        <button type="submit" class="btn-primary">Create account</button>
+      </div>
+      <div class="mb">
+        <div class="mtm">
+          <p>Already have an account? <a href="/accounts/login">Sign in</a></p>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<%- include('../partials/footer.ejs') %>

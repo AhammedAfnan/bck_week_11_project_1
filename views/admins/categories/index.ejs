@@ -1,0 +1,57 @@
+<%- include('../../partials/header.ejs') %> <%-
+include('../../partials/admin_navbar.ejs') %>
+
+<aside>
+  <div class="items">
+    <a href="/admin/dashboard" class="sidebar-item">Home</a>
+    <a href="/admin/users" class="sidebar-item">Users</a>
+    <a href="/admin/categories" class="sidebar-item">Categories</a>
+    <a href="/admin/products" class="sidebar-item">Products</a>
+  </div>
+</aside>
+
+<div class="main">
+  <div class="container-cat">
+    <div class="mx-[32px]">
+      <div class="flex items-center">
+        <h1 class="flex-grow-1 flex-shrink-1">Categories</h1>
+        <a
+          href="/admin/categories/new"
+          class="btn-primary max-w-fitcontent flex-shrink-0"
+          >Create category</a
+        >
+      </div>
+      <% if (categories.length === 0) { %>
+      <h1>No categories!</h1>
+      <% } else { %>
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% categories.forEach(category => { %>
+          <tr>
+            <td><%= category.id %></td>
+            <td><%= category.name %></td>
+            <td>
+              <a
+                href="/admin/categories/<%= category.id %>/edit"
+                class="btn-dark-sm"
+                >Edit</a
+              >
+              <button class="btn-danger-sm">Delete</button>
+            </td>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
+      <% } %>
+    </div>
+  </div>
+</div>
+
+<%- include('../../partials/footer.ejs') %>

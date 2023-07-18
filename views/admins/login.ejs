@@ -1,0 +1,31 @@
+<%- include('../partials/header.ejs') %>
+
+<div class="registration">
+  <div class="form-width">
+    <h1>Admin</h1>
+    <% if (error) { %>
+    <div class="alert alert-danger"><%= error %></div>
+    <% } %>
+    <form action="/admin/session" method="post" class="sign-in">
+      <h1>Sign in</h1>
+      <div class="mbm">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" name="email" class="form-control" id="email" />
+      </div>
+      <div class="mbm">
+        <label for="password" class="form-label">Password</label>
+        <input
+          type="password"
+          name="password"
+          class="form-control"
+          id="password"
+        />
+      </div>
+      <div class="mbm">
+        <button type="submit" class="btn-primary">Log in</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<%- include('../partials/footer.ejs') %>

@@ -1,0 +1,43 @@
+<%- include('../../partials/header.ejs') %> <%-
+include('../../partials/admin_navbar.ejs') %>
+
+<aside>
+  <div class="items">
+    <a href="/admin/dashboard" class="sidebar-item">Home</a>
+    <a href="/admin/users" class="sidebar-item">Users</a>
+    <a href="/admin/categories" class="sidebar-item">Categories</a>
+    <a href="/admin/products" class="sidebar-item">Products</a>
+  </div>
+</aside>
+
+<div class="container">
+  <h1 class="title">Edit <%= category.name %></h1>
+
+  <% if (error) { %>
+  <div class="alert alert-danger"><%= error %></div>
+  <% } %>
+
+  <form action="/admin/categories/<%= category.id %>?_method=PUT" method="post">
+    <div class="mbm">
+      <label for="name" class="form-label">Category name</label>
+      <input
+        type="text"
+        class="form-control"
+        name="name"
+        id="name"
+        value="<%= category.name %>"
+        placeholder="Eg: Nike"
+      />
+    </div>
+    <div class="mbm">
+      <button type="submit" class="btn-primary">Update</button>
+    </div>
+    <div class="mbm">
+      <a href="/admin/categories" class="btn-secondary mt-0"
+        >Back to categories</a
+      >
+    </div>
+  </form>
+</div>
+
+<%- include('../../partials/footer.ejs') %>
