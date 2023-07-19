@@ -43,7 +43,13 @@ include('../../partials/admin_navbar.ejs') %>
                 class="btn-dark-sm"
                 >Edit</a
               >
-              <button class="btn-danger-sm">Delete</button>
+              <form
+                action="/admin/categories/<%= category.id %>?_method=DELETE"
+                method="POST"
+                style="display: inline-block"
+              >
+                <button class="btn-danger-sm" type="submit">Delete</button>
+              </form>
             </td>
           </tr>
           <% }) %>

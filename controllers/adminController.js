@@ -13,10 +13,10 @@ const adminController = {
     try {
       const user = await User.findOne({ email });
       if (!user)
-        return res.render("users/login", { errors: "Admin note found! " });
+        return res.render("admins/login", { error: "Admin not found! " });
       const isMatch = await bcrypt.compare(password, user.password);
       if (!isMatch)
-        return res.render("users/login", { errors: "Password is wrong" });
+        return res.render("admins/login", { error: "Password is wrong" });
       if (user.isAdmin) {
         req.session.adminId = user.id;
         return res.redirect("/admin/dashboard");

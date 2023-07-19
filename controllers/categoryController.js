@@ -60,7 +60,11 @@ const categoryController = {
     }
   },
 
-  destroy: async (req, res) => {},
+  destroy: async (req, res) => {
+    const { id } = req.params;
+    await Category.findByIdAndDelete(id);
+    return res.redirect("/admin/categories");
+  },
 };
 
 module.exports = categoryController;
