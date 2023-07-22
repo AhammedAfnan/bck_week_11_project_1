@@ -1,6 +1,3 @@
-<%- include('../partials/header.ejs') %> <%-
-include('../partials/admin_navbar.ejs') %>
-
 <aside>
   <div class="items">
     <a href="/admin/dashboard" class="sidebar-item">Home</a>
@@ -9,10 +6,3 @@ include('../partials/admin_navbar.ejs') %>
     <a href="/admin/products" class="sidebar-item">Products</a>
   </div>
 </aside>
-
-<h1>Welcome, <%= admin.firstName %> dashboard</h1>
-
-<a href="/admin/categories">Categories</a>
-<a href="/admin/categories/new">Create a Category</a>
-
-<%- include('../partials/footer.ejs') %>

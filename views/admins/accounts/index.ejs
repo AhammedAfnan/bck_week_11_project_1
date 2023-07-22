@@ -14,41 +14,33 @@ include('../../partials/admin_navbar.ejs') %>
   <div class="container-cat">
     <div class="mx-[32px]">
       <div class="flex items-center">
-        <h1 class="flex-grow-1 flex-shrink-1">Categories</h1>
-        <a
-          href="/admin/categories/new"
-          class="btn-primary max-w-fitcontent flex-shrink-0"
-          >Create category</a
-        >
+        <h1 class="flex-grow-1 flex-shrink-1">Users</h1>
       </div>
-      <% if (categories.length === 0) { %>
-      <h1>No categories!</h1>
+      <% if (users.length === 0) { %>
+      <h1>No users!</h1>
       <% } else { %>
       <table>
         <thead>
           <tr>
             <th>#</th>
-            <th>Name</th>
+            <th>Email</th>
             <th>Actions</th>
           </tr>
         </thead>
         <tbody>
-          <% categories.forEach(category => { %>
+          <% users.forEach(user => { %>
           <tr>
-            <td><%= category.id %></td>
-            <td><%= category.name %></td>
+            <td><%= user.id %></td>
+            <td><%= user.email %></td>
             <td>
-              <a
-                href="/admin/categories/<%= category.id %>/edit"
-                class="btn-dark-sm"
-                >Edit</a
-              >
               <form
-                action="/admin/categories/<%= category.id %>?_method=DELETE"
+                action="/admin/accounts/<%= user.id %>/<%= user.isBlocked ? 'unblock' : 'block' %>?_method=PUT"
                 method="POST"
                 style="display: inline-block"
               >
-                <button class="btn-danger-sm" type="submit">Delete</button>
+                <button class="btn-danger-sm" type="submit">
+                  <%= user.isBlocked ? 'Unblock' : 'Block' %>
+                </button>
               </form>
             </td>
           </tr>

@@ -1,0 +1,50 @@
+<%- include('../../partials/header.ejs') %> <%-
+include('../../partials/admin_navbar.ejs') %> <%-
+include('../../partials/admin_sidebar.ejs') %>
+
+<div class="container">
+  <h1 class="title">Create a new Product</h1>
+
+  <form action="/admin/products" method="post" enctype="multipart/form-data">
+    <div class="mbm">
+      <label for="name" class="form-label">Product title</label>
+      <input type="text" class="form-control" name="title" id="name" />
+    </div>
+    <div class="mbm">
+      <label for="descr" class="form-label">Product description</label>
+      <textarea id="descr" name="description" class="form-control"></textarea>
+    </div>
+    <div class="mbm">
+      <label for="mrp" class="form-label">Product price (MRP)</label>
+      <input type="number" class="form-control" name="mrp" id="mrp" />
+    </div>
+    <div class="mbm">
+      <label for="regular" class="form-label">Product price (Regular)</label>
+      <input type="number" class="form-control" name="price" id="regular" />
+    </div>
+    <div class="mbm">
+      <label for="mainImg" class="form-label">Product main image</label>
+      <input type="file" class="form-control" name="mainImg" id="mainImg" />
+    </div>
+    <div class="mbm">
+      <label for="images" class="form-label">Product images</label>
+      <input
+        type="file"
+        class="form-control"
+        name="images"
+        id="images"
+        multiple
+      />
+    </div>
+    <div class="mbm">
+      <button type="submit" class="btn-primary">Create</button>
+    </div>
+    <div class="mbm">
+      <a href="/admin/products" class="btn-secondary mt-0"
+        >Back to products</a
+      >
+    </div>
+  </form>
+</div>
+
+<%- include('../../partials/footer.ejs') %>

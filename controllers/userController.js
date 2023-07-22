@@ -26,6 +26,8 @@ const userController = {
       const isMatch = await bcrypt.compare(password, user.password);
       if (!isMatch)
         return res.render("users/login", { errors: "Password is wrong" });
+      if (user.isBlocked)
+        return res.render("users/login", { errors: "You's blocked!" });
       req.session.userId = user.id;
       res.redirect("/");
     } catch (e) {
@@ -151,6 +153,7 @@ const userController = {
       });
       if (user) {
         await user.save();
+        req.session.userId = user.id;
         res.redirect("/");
       } else {
         res.render("users/register", { errors: "Something went wrong" });

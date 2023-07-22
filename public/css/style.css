@@ -187,6 +187,11 @@ th {
   transition: 0.1s linear;
 }
 
+textarea.form-control {
+  resize: vertical;
+  height: 150px;
+}
+
 .form-control:focus {
   outline: none;
   border-color: #ff5e00;

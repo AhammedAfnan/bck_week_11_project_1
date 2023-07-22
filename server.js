@@ -27,8 +27,10 @@ mongoose
   .catch((e) => console.log(e.message));
 
 app.use("/", require("./routes/user"));
+app.use("/", require("./routes/product"));
 app.use("/admin", require("./routes/admin"));
 app.use("/admin/categories", require("./routes/category"));
+app.use("/admin/accounts", require("./routes/accounts"));
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server is listening on port ${PORT}`));
