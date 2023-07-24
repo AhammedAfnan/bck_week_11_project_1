@@ -487,7 +487,7 @@ aside .items .sidebar-item.active::before {
 }
 
 
-.self-cards {
+.self-cards, .cat-cards {
   margin: 0 -10px;
   display: flex;
   min-width: 100%;
@@ -678,6 +678,85 @@ aside .items .sidebar-item.active::before {
 .product-btn-primary {
   background-color: rgb(15, 20, 25);
   color: #fff;
+}
+
+.title-cat {
+  font-size: 54px;
+  font-weight: 700;
+  padding-bottom: 30px;
+}
+
+.cat-cards {
+  margin: 0 -5px;
+}
+
+.cat-cards > * {
+  width: 250px;
+  flex: 1 0 auto;
+  max-width: 100%;
+  padding: 0 5px;
+}
+
+.cat-cards .slef-card article {
+  border: 1px solid whitesmoke;
+  border-radius: 2px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.cat-cards .slef-card article .thumbnile {
+  position: relative;
+  width: 100%;
+}
+
+.cat-cards .slef-card article .thumbnile .aspect-ratio {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.cat-cards .slef-card article .thumbnile .aspect-ratio .spacer {
+  padding-bottom: 125%;
+}
+
+.cat-cards .slef-card article .thumbnile .aspect-ratio img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 100%;
+  object-fit: contain;
+}
+
+.cat-cards .slef-card article .details {
+  padding: .5rem;
+}
+
+.cat-cards .slef-card article .details .metadata h1 {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 18px;
+}
+
+.cat-cards .slef-card article .details .metadata h1 a {
+  color: #00000f;
+}
+
+.cat-cards .slef-card article .details .metadata h1 a:hover {
+  text-decoration: underline;
+  color: #065fd4;
+}
+
+.cat-cards .slef-card article .details .metadata .regular {
+  font-size: 28px;
+  text-align: center;
+  padding-top: 4px;
 }
 
 @media screen and (max-width: 1320px) {

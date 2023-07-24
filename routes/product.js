@@ -22,6 +22,7 @@ router.post("/admin/products", upload.single('mainImg'), productsControllers.cre
 router.get('/admin/products/:id/edit', productsControllers.edit);
 
 // user routes
+router.get('/products', productsControllers.userIndex);
 router.get('/products/:id', productsControllers.show);
 
 module.exports = router;

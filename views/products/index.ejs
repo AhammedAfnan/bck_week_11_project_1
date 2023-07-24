@@ -1,0 +1,53 @@
+<%- include('../partials/header') %>
+<%- include('../partials/user_navbar') %>
+
+<% function formatPrice(price) { 
+  const formatter = new Intl.NumberFormat('en-IN', {
+    style: 'currency',
+    currency: 'INR',
+    minimumFractionDigits: 0,
+  });
+  return formatter.format(price);
+} %>
+
+<main style="padding-top: 24px;">
+  <div class="home-container">
+    <h1 class="title-cat"><%= categoryName %></h1>
+    <div class="cat-cards">
+      <% products.forEach(product => { %>
+        <div class="slef-card">
+          <article>
+            <div class="thumbnile">
+              <div class="aspect-ratio">
+                <div class="spacer"></div>
+                <img src="/<%= product.mainImg %>" alt="<%= product.title %>">
+              </div>
+            </div>
+            <div class="details">
+              <div class="metadata">
+                <h1 class="cat-title">
+                  <a href="/products/<%= product._id %>"><%= product.title %></a>
+                </h1>
+                <p class="regular"><%= formatPrice(product.price) %></p>
+              </div>
+            </div>
+          </article>
+        </div>
+      <% }); %>
+
+      <div class="placeholder"></div>
+      <div class="placeholder"></div>
+      <div class="placeholder"></div>
+      <div class="placeholder"></div>
+      <div class="placeholder"></div>
+      <div class="placeholder"></div>
+      <div class="placeholder"></div>
+      <div class="placeholder"></div>
+      <div class="placeholder"></div>
+      <div class="placeholder"></div>
+    </div>
+  </div>
+</main>
+
+
+<%- include('../partials/footer') %>

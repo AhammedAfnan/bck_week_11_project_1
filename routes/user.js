@@ -23,6 +23,8 @@ router.get("/", async (req, res) => {
   }
 });
 
+// authentication
+
 router.get("/accounts/register", userController.new);
 router.post("/accounts", userController.register);
 

@@ -12,6 +12,18 @@ const productsControllers = {
     }
   },
 
+  userIndex: async (req, res) => {
+    const {category} = req.query; 
+    try {
+      if (!category) return res.redirect('/');
+      const categoryName = await Category.findById(category);
+      const products = await Product.find({ category });
+      res.render('products/index', { products, categoryName: categoryName.name });
+    } catch (e) {
+      console.log(e);
+    }
+  },
+
   new: async (req, res) => {
     const categories = await Category.find({});
     return res.render("admins/products/new", { categories });
