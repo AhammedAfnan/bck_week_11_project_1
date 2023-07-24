@@ -2,6 +2,15 @@
 <%- include('../../partials/admin_navbar.ejs') %> 
 <%- include('../../partials/admin_sidebar.ejs') %>
 
+<% function formatPrice(price) { 
+  const formatter = new Intl.NumberFormat('en-IN', {
+    style: 'currency',
+    currency: 'INR',
+    minimumFractionDigits: 0,
+  });
+  return formatter.format(price);
+ } %>
+
 <div class="main">
   <div class="container-cat">
     <div class="mx-[32px]">
@@ -19,19 +28,25 @@
       <table>
         <thead>
           <tr>
-            <th>#</th>
             <th>Imge</th>
             <th>Title</th>
             <th>Description</th>
-            <th>Actions</th>
+            <th>Price</th>
+            <th>M.R.P</th>
+            <th style="min-width: 300px;">Actions</th>
           </tr>
         </thead>
         <tbody>
           <% products.forEach(product => { %>
           <tr>
-            <td><%= product.id %></td>
-            <td><%= product.title %></td>
             <td>
+              <img height="80" width="80" src="/<%= product.mainImg %>" alt="">
+            </td>
+            <td><%= product.title %></td>
+            <td><%= product.description %></td>
+            <td><%= formatPrice(product.price) %></td>
+            <td><%= formatPrice(product.mrp) %></td>
+            <td colspan="4">
               <a
                 href="/admin/products/<%= product.id %>/edit"
                 class="btn-dark-sm"

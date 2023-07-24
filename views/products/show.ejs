@@ -1,0 +1,35 @@
+<%- include('../partials/header.ejs') %> 
+<%- include('../partials/user_navbar') %>
+
+<% function formatPrice(price) { 
+  const formatter = new Intl.NumberFormat('en-IN', {
+    style: 'currency',
+    currency: 'INR',
+    minimumFractionDigits: 0,
+  });
+  return formatter.format(price);
+ } %>
+
+<main style="padding-top: 24px;">
+  <div class="home-container">
+    <div class="product-details">
+      <div class="images">
+        <img src="/<%= product.mainImg %>" alt="">
+      </div>
+      <div class="details">
+        <h1 class="product-name"><%= product.title %></h1>
+        <div class="prices">
+          <div class="regular"><%= formatPrice(product.price) %></div>
+          <div class="mrp">M.R.P: <span class="line-through"><%= formatPrice(product.mrp) %></span></div>
+        </div>
+        <p class="description"><%= product.description %></p>
+        <div class="product-buttons">
+          <button class="product-btn product-btn-secondary">Add to Cart</button>
+          <button class="product-btn product-btn-primary">Buy Now</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<%- include('../partials/footer.ejs') %>

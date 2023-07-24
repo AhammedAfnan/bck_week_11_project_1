@@ -1,5 +1,224 @@
-<%- include('../partials/header.ejs') %> 
+<%- include('../partials/header.ejs') %> <%- include('../partials/user_navbar')
+%>
 
-Hello, <%= user ? user.firstName : "Guest" %> 
+<% function formatPrice(price) { 
+  const formatter = new Intl.NumberFormat('en-IN', {
+    style: 'currency',
+    currency: 'INR',
+    minimumFractionDigits: 0,
+  });
+  return formatter.format(price);
+ } %>
+
+<main style="padding-top: 24px">
+  <div class="home-container">
+    <section>
+      <h1 class="section-title">Men's</h1>
+      <div>
+        <div class="self-cards">
+        <% mensProducts.forEach(product => { %>
+          <div class="self-card">
+            <article>
+              <div class="thumbnile">
+                <div class="aspect-ratio">
+                  <div class="spacer"></div>
+                  <img src="/<%= product.mainImg %>" alt="" />
+                </div>
+              </div>
+              <div class="details">
+                <div class="metadata">
+                  <h1>
+                    <a href="/products/<%= product._id %>"><%= product.title %></a>
+                  </h1>
+                  <p class="regular"><%= formatPrice(product.price) %></p>
+                </div>
+                <button class="cart-button">Add to cart</button>
+              </div>
+            </article>
+          </div>
+          <% }); %>
+
+          <div class="placeholder"></div>
+          <div class="placeholder"></div>
+          <div class="placeholder"></div>
+          <div class="placeholder"></div>
+          <div class="placeholder"></div>
+          <div class="placeholder"></div>
+          <div class="placeholder"></div>
+          <div class="placeholder"></div>
+          <div class="placeholder"></div>
+          <div class="placeholder"></div>
+          <div class="placeholder"></div>
+        </div>
+      </div>
+      <div class="divider">
+        <div class="line"></div>
+        <a href="#">View all</a>
+        <div class="line"></div>
+      </div>
+    </section>
+
+    <section>
+      <h1 class="section-title">Female</h1>
+      <div>
+        <div class="self-cards">
+          <% femaleProducts.forEach(product => { %>
+            <div class="self-card">
+              <article>
+                <div class="thumbnile">
+                  <div class="aspect-ratio">
+                    <div class="spacer"></div>
+                    <img src="/<%= product.mainImg %>" alt="" />
+                  </div>
+                </div>
+                <div class="details">
+                  <div class="metadata">
+                    <h1>
+                      <a href="/products/<%= product._id %>"><%= product.title %></a>
+                    </h1>
+                    <p class="regular"><%= formatPrice(product.price) %></p>
+                  </div>
+                  <button class="cart-button">Add to cart</button>
+                </div>
+              </article>
+            </div>
+          <% }) %>
+
+          <div class="placeholder"></div>
+          <div class="placeholder"></div>
+          <div class="placeholder"></div>
+          <div class="placeholder"></div>
+          <div class="placeholder"></div>
+          <div class="placeholder"></div>
+          <div class="placeholder"></div>
+          <div class="placeholder"></div>
+          <div class="placeholder"></div>
+          <div class="placeholder"></div>
+          <div class="placeholder"></div>
+        </div>
+      </div>
+      <div class="divider">
+        <div class="line"></div>
+        <a href="#">View all</a>
+        <div class="line"></div>
+      </div>
+    </section>
+
+    <!-- <section>
+      <h1 class="section-title">Kids</h1>
+      <div>
+        <div class="self-cards">
+          <div class="self-card">
+            <article>
+              <div class="thumbnile">
+                <div class="aspect-ratio">
+                  <div class="spacer"></div>
+                  <img src="" alt="" />
+                </div>
+              </div>
+              <div class="details">
+                <h1><a href="/products/1">Product Title</a></h1>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor
+                  fugiat voluptate culpa aspernatur laboriosam eos.
+                </p>
+                <button class="cart-button">Add to cart</button>
+              </div>
+            </article>
+          </div>
+          <div class="self-card">
+            <article>
+              <div class="thumbnile">
+                <div class="aspect-ratio">
+                  <div class="spacer"></div>
+                  <img src="" alt="" />
+                </div>
+              </div>
+              <div class="details">
+                <h1><a href="/products/1">Product Title</a></h1>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor
+                  fugiat voluptate culpa aspernatur laboriosam eos.
+                </p>
+                <button class="cart-button">Add to cart</button>
+              </div>
+            </article>
+          </div>
+          <div class="self-card">
+            <article>
+              <div class="thumbnile">
+                <div class="aspect-ratio">
+                  <div class="spacer"></div>
+                  <img src="" alt="" />
+                </div>
+              </div>
+              <div class="details">
+                <h1><a href="/products/1">Product Title</a></h1>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor
+                  fugiat voluptate culpa aspernatur laboriosam eos.
+                </p>
+                <button class="cart-button">Add to cart</button>
+              </div>
+            </article>
+          </div>
+          <div class="self-card">
+            <article>
+              <div class="thumbnile">
+                <div class="aspect-ratio">
+                  <div class="spacer"></div>
+                  <img src="" alt="" />
+                </div>
+              </div>
+              <div class="details">
+                <h1><a href="/products/1">Product Title</a></h1>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor
+                  fugiat voluptate culpa aspernatur laboriosam eos.
+                </p>
+                <button class="cart-button">Add to cart</button>
+              </div>
+            </article>
+          </div>
+          <div class="self-card">
+            <article>
+              <div class="thumbnile">
+                <div class="aspect-ratio">
+                  <div class="spacer"></div>
+                  <img src="" alt="" />
+                </div>
+              </div>
+              <div class="details">
+                <h1><a href="/products/1">Product Title</a></h1>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor
+                  fugiat voluptate culpa aspernatur laboriosam eos.
+                </p>
+                <button class="cart-button">Add to cart</button>
+              </div>
+            </article>
+          </div>
+
+          <div class="placeholder"></div>
+          <div class="placeholder"></div>
+          <div class="placeholder"></div>
+          <div class="placeholder"></div>
+          <div class="placeholder"></div>
+          <div class="placeholder"></div>
+          <div class="placeholder"></div>
+          <div class="placeholder"></div>
+          <div class="placeholder"></div>
+          <div class="placeholder"></div>
+          <div class="placeholder"></div>
+        </div>
+      </div>
+      <div class="divider">
+        <div class="line"></div>
+        <a href="#">View all</a>
+        <div class="line"></div>
+      </div>
+    </section> -->
+  </div>
+</main>
 
 <%- include('../partials/footer.ejs') %>

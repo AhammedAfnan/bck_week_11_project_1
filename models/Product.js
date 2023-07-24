@@ -33,6 +33,11 @@ const productSchema = new Schema(
       type: Boolean,
       default: true,
     },
+    category: {
+      type: Schema.ObjectId,
+      ref: 'Category',
+      required: true,
+    }
   },
   { timestamps: true }
 );

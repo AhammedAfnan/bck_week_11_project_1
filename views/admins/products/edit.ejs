@@ -3,28 +3,28 @@ include('../../partials/admin_navbar.ejs') %> <%-
 include('../../partials/admin_sidebar.ejs') %>
 
 <div class="container">
-  <h1 class="title">Create a new Product</h1>
+  <h1 class="title">Edit <%= product.title %></h1>
 
-  <form action="/admin/products" method="post" enctype="multipart/form-data">
+  <form action="/admin/products/<%= product._id %>?_method=PUT" method="post" enctype="multipart/form-data">
     <div class="mbm">
       <label for="name" class="form-label">Product title</label>
-      <input type="text" class="form-control" name="title" id="name" />
+      <input type="text" class="form-control" name="title" id="name" value="<%= product.title %>" />
     </div>
     <div class="mbm">
       <label for="descr" class="form-label">Product description</label>
-      <textarea id="descr" name="description" class="form-control"></textarea>
+      <textarea id="descr" name="description" class="form-control"><%= product.description %></textarea>
     </div>
     <div class="mbm">
       <label for="mrp" class="form-label">Product price (MRP)</label>
-      <input type="number" class="form-control" name="mrp" id="mrp" />
+      <input type="number" class="form-control" name="mrp" id="mrp" value="<%= product.mrp %>" />
     </div>
     <div class="mbm">
       <label for="regular" class="form-label">Product price (Regular)</label>
-      <input type="number" class="form-control" name="price" id="regular" />
+      <input type="number" class="form-control" name="price" id="regular" value="<%= product.price %>" />
     </div>
     <div class="mbm">
       <label for="stock" class="form-label">Stock</label>
-      <input type="number" class="form-control" name="stock" id="stock" />
+      <input type="number" class="form-control" name="stock" id="stock" value="<%= product.stock %>" />
     </div>
     <div class="mbm">
       <label for="mainImg" class="form-label">Product main image</label>
@@ -45,7 +45,7 @@ include('../../partials/admin_sidebar.ejs') %>
       <select name="category" class="form-control">
         <option value="-1" selected disabled>Choose one</option>
         <% categories.forEach(cat => { %>
-          <option value="<%= cat.id %>"><%= cat.name %></option>
+          <option value="<%= cat.id %>" <%= product.category === cat.id ? "selected" : "" %>><%= cat.name %></option>
         <% }) %>
       </select>
     </div>
