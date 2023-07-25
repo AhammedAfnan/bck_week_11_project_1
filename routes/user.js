@@ -1,5 +1,7 @@
 const router = require("express").Router();
 const userController = require("../controllers/userController");
+const auth = require("../middlewares/auth");
+const guest = require("../middlewares/guest");
 const Category = require("../models/Category");
 const Product = require("../models/Product");
 const User = require("../models/User");
@@ -25,10 +27,12 @@ router.get("/", async (req, res) => {
 
 // authentication
 
-router.get("/accounts/register", userController.new);
-router.post("/accounts", userController.register);
+router.get("/accounts/register", guest, userController.new);
+router.post("/accounts", guest, userController.register);
 
-router.get("/accounts/login", userController.login);
-router.post("/accounts/session", userController.session);
+router.get("/accounts/login", guest, userController.login);
+router.post("/accounts/session", guest, userController.session);
+
+router.post('/accounts/logout', auth, userController.logout);
 
 module.exports = router;

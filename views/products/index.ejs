@@ -16,22 +16,24 @@
     <div class="cat-cards">
       <% products.forEach(product => { %>
         <div class="slef-card">
-          <article>
-            <div class="thumbnile">
-              <div class="aspect-ratio">
-                <div class="spacer"></div>
-                <img src="/<%= product.mainImg %>" alt="<%= product.title %>">
+          <div class="pb-[30px]">
+            <article>
+              <div class="thumbnile">
+                <div class="aspect-ratio">
+                  <div class="spacer"></div>
+                  <img src="/<%= product.mainImg %>" alt="<%= product.title %>">
+                </div>
               </div>
-            </div>
-            <div class="details">
-              <div class="metadata">
-                <h1 class="cat-title">
-                  <a href="/products/<%= product._id %>"><%= product.title %></a>
-                </h1>
-                <p class="regular"><%= formatPrice(product.price) %></p>
+              <div class="details">
+                <div class="metadata">
+                  <h1 class="cat-title">
+                    <a href="/products/<%= product._id %>"><%= product.title %></a>
+                  </h1>
+                  <p class="regular"><%= formatPrice(product.price) %></p>
+                </div>
               </div>
-            </div>
-          </article>
+            </article>
+          </div>
         </div>
       <% }); %>
 

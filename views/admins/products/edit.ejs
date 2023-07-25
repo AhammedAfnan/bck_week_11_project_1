@@ -5,7 +5,7 @@ include('../../partials/admin_sidebar.ejs') %>
 <div class="container">
   <h1 class="title">Edit <%= product.title %></h1>
 
-  <form action="/admin/products/<%= product._id %>?_method=PUT" method="post" enctype="multipart/form-data">
+  <form action="/admin/products/<%= product._id %>?_method=PUT" class="edit-form-product" method="post" enctype="multipart/form-data">
     <div class="mbm">
       <label for="name" class="form-label">Product title</label>
       <input type="text" class="form-control" name="title" id="name" value="<%= product.title %>" />
@@ -43,9 +43,9 @@ include('../../partials/admin_sidebar.ejs') %>
     <div class="mbm">
       <label for="category" class="form-label">Select category</label>
       <select name="category" class="form-control">
-        <option value="-1" selected disabled>Choose one</option>
+        <option value="-1" disabled>Choose one</option>
         <% categories.forEach(cat => { %>
-          <option value="<%= cat.id %>" <%= product.category === cat.id ? "selected" : "" %>><%= cat.name %></option>
+          <option value="<%= cat.id %>" data-category="<%= product.category %>"><%= cat.name %></option>
         <% }) %>
       </select>
     </div>

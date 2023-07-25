@@ -543,6 +543,16 @@ aside .items .sidebar-item.active::before {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  padding-top: 0.8em;
+}
+
+.self-card article .details .metadata h1 a {
+  color: #00001f;
+}
+
+.self-card article .details .metadata h1 a:hover {
+  color: #2e08d6;
+  text-decoration: underline;
 }
 
 .self-card article .details .metadata .regular {
@@ -585,7 +595,7 @@ aside .items .sidebar-item.active::before {
 }
 
 .cart-button {
-  height: 44px;
+  height: 38px;
   width: 100%;
   display: flex;
   align-items: center;
@@ -601,6 +611,12 @@ aside .items .sidebar-item.active::before {
   border: none;
   border-radius: 16px;
   box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+  transition-property: background-color;
+  transition-duration: .2s;
+}
+
+.cart-button:hover {
+  background-color: rgb(44, 49, 53);
 }
 
 .product-details {
@@ -757,6 +773,35 @@ aside .items .sidebar-item.active::before {
   font-size: 28px;
   text-align: center;
   padding-top: 4px;
+}
+
+.pb-\[30px\] {
+  height: 100%;
+  padding-bottom: 30px;
+}
+
+.btn-session {
+  height: 36px;
+  min-width: 150px;
+  padding: 0 12px;
+  border-radius: 2px;
+  user-select: none;
+  white-space: nowrap;
+  font-size: 15px;
+  line-height: 32px;
+  font-weight: 600;
+  font-family: inherit;
+  background-color: transparent;
+  border: 1px solid #065fd4;
+  color: #065fd4;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color .2s;
+}
+
+.btn-session:hover {
+  background-color: #ebf3ff;
 }
 
 @media screen and (max-width: 1320px) {

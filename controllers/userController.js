@@ -162,6 +162,11 @@ const userController = {
       res.render("user/register", { errors: e });
     }
   },
+
+  logout: async (req, res) => {
+    req.session.destroy();
+    return res.redirect('/');
+  },
 };
 
 module.exports = userController;

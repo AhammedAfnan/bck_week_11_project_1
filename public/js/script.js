@@ -20,3 +20,13 @@ sidebarItems.forEach((item) => {
     item.ariaCurrent = "page";
   }
 });
+
+const options = document.querySelectorAll(".edit-form-product select option");
+
+if (options.length > 0) {
+  options.forEach((option) => {
+    option.value === option.getAttribute('data-category')
+      ? option.setAttribute("selected", "")
+      : "";
+  });
+}
