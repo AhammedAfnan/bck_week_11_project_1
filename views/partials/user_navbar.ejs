@@ -11,12 +11,10 @@
       <a href="#">Cart</a>
       <a href="#">Wishlists</a>
       <% if (user) { %>
-        <%= user %>
         <form action="/accounts/logout" method="POST" style="display: inline;">
           <button type="submit" class="btn-session">Sign out</button>
         </form>
       <% } else { %>
-        <%= user %>
         <a href="/accounts/login" class="btn-session">Sign in</a>
       <% } %>
     </div>
