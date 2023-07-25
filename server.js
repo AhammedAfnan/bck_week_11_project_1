@@ -3,6 +3,9 @@ const express = require("express");
 const mongoose = require("mongoose");
 const session = require("express-session");
 const methodOverride = require("method-override");
+const User = require("./models/User");
+const Category = require("./models/Category");
+const Product = require("./models/Product");
 
 const app = express();
 
@@ -26,6 +29,20 @@ mongoose
   .then(() => console.log("DB Connected"))
   .catch((e) => console.log(e.message));
 
+async function filterProduct(name) {
+  const category = await Category.findOne({ name });
+  const products = await Product.find({ category: category._id }).limit(5);
+  return products
+}
+
+app.get('/', async (req, res) => {
+  const user = await User.findById(req.session.userId);
+  const [mensProducts, femaleProducts] = await Promise.all([
+    filterProduct("Male"),
+    filterProduct("Female"),
+  ]);
+  res.render('users/home', {user, mensProducts, femaleProducts});
+})
 app.use("/", require("./routes/user"));
 app.use("/", require("./routes/product"));
 app.use("/admin", require("./routes/admin"));

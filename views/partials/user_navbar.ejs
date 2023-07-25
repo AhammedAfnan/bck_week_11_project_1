@@ -10,7 +10,7 @@
     <div class="items">
       <a href="#">Cart</a>
       <a href="#">Wishlists</a>
-      <% if (user) { %>
+      <% if (user && typeof user !== "undefined") { %>
         <form action="/accounts/logout" method="POST" style="display: inline;">
           <button type="submit" class="btn-session">Sign out</button>
         </form>

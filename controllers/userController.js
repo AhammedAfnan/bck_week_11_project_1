@@ -153,8 +153,8 @@ const userController = {
       });
       if (user) {
         await user.save();
-        req.session.userId = user.id;
-        res.redirect("/");
+        req.session.userId = user._id;
+        return res.redirect("/");
       } else {
         res.render("users/register", { errors: "Something went wrong" });
       }

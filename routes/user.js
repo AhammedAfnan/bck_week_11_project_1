@@ -19,7 +19,7 @@ router.get("/", async (req, res) => {
       filterProduct("Male"),
       filterProduct("Female"),
     ]);
-    return res.render("users/home", { user, mensProducts, femaleProducts });
+    return res.render("users/home", { test: "Hello World" });
   } catch (e) {
     res.render("users/home", { errors: e.message });
   }

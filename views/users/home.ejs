@@ -1,5 +1,5 @@
-<%- include('../partials/header.ejs') %> <%- include('../partials/user_navbar')
-%>
+<%- include('../partials/header.ejs') %> 
+<%- include('../partials/user_navbar', { user: user }) %>
 
 <% function formatPrice(price) { 
   const formatter = new Intl.NumberFormat('en-IN', {
@@ -10,33 +10,37 @@
   return formatter.format(price);
  } %>
 
+
+
 <main style="padding-top: 24px">
   <div class="home-container">
     <section>
       <h1 class="section-title">Men's</h1>
       <div>
         <div class="self-cards">
-        <% mensProducts.forEach(product => { %>
-          <div class="self-card">
-            <article>
-              <div class="thumbnile">
-                <div class="aspect-ratio">
-                  <div class="spacer"></div>
-                  <img src="/<%= product.mainImg %>" alt="" />
-                </div>
+          <% if (mensProducts.length > 0) { %>
+            <% mensProducts.forEach(product => { %>
+              <div class="self-card">
+                <article>
+                  <div class="thumbnile">
+                    <div class="aspect-ratio">
+                      <div class="spacer"></div>
+                      <img src="/<%= product.mainImg %>" alt="" />
+                    </div>
+                  </div>
+                  <div class="details">
+                    <div class="metadata">
+                      <h1>
+                        <a href="/products/<%= product._id %>"><%= product.title %></a>
+                      </h1>
+                      <p class="regular"><%= formatPrice(product.price) %></p>
+                    </div>
+                    <button class="cart-button">Add to cart</button>
+                  </div>
+                </article>
               </div>
-              <div class="details">
-                <div class="metadata">
-                  <h1>
-                    <a href="/products/<%= product._id %>"><%= product.title %></a>
-                  </h1>
-                  <p class="regular"><%= formatPrice(product.price) %></p>
-                </div>
-                <button class="cart-button">Add to cart</button>
-              </div>
-            </article>
-          </div>
-          <% }); %>
+              <% }); %>
+          <% } %>
 
           <div class="placeholder"></div>
           <div class="placeholder"></div>
@@ -62,27 +66,29 @@
       <h1 class="section-title">Female</h1>
       <div>
         <div class="self-cards">
-          <% femaleProducts.forEach(product => { %>
-            <div class="self-card">
-              <article>
-                <div class="thumbnile">
-                  <div class="aspect-ratio">
-                    <div class="spacer"></div>
-                    <img src="/<%= product.mainImg %>" alt="" />
+          <% if (femaleProducts.length > 0) { %>
+            <% femaleProducts.forEach(product => { %>
+              <div class="self-card">
+                <article>
+                  <div class="thumbnile">
+                    <div class="aspect-ratio">
+                      <div class="spacer"></div>
+                      <img src="/<%= product.mainImg %>" alt="" />
+                    </div>
                   </div>
-                </div>
-                <div class="details">
-                  <div class="metadata">
-                    <h1>
-                      <a href="/products/<%= product._id %>"><%= product.title %></a>
-                    </h1>
-                    <p class="regular"><%= formatPrice(product.price) %></p>
+                  <div class="details">
+                    <div class="metadata">
+                      <h1>
+                        <a href="/products/<%= product._id %>"><%= product.title %></a>
+                      </h1>
+                      <p class="regular"><%= formatPrice(product.price) %></p>
+                    </div>
+                    <button class="cart-button">Add to cart</button>
                   </div>
-                  <button class="cart-button">Add to cart</button>
-                </div>
-              </article>
-            </div>
-          <% }) %>
+                </article>
+              </div>
+            <% }) %>
+          <% } %>
 
           <div class="placeholder"></div>
           <div class="placeholder"></div>
